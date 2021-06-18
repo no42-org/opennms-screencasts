@@ -1,0 +1,13 @@
+---
+version: '3'
+  services:
+    unbound:
+      image: mvance/unbound:latest
+      container_name: unbound
+      restart: always
+      volumes:
+        - './forward-records.conf:/opt/unbound/etc/unbound/forward-records.conf'
+        - './a-records.conf:/opt/unbound/etc/unbound/a-records.conf'
+      ports:
+        - '53:53/udp'
+        - '53:53/tcp'
